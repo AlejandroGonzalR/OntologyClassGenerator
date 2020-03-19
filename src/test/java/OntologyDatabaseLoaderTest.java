@@ -1,12 +1,13 @@
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import neo4j.OntologyDatabaseLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class OntologyDatabaseLoaderTest {
     private static final String ROOT_NAME = "ConsumableThing";
 
-    private final Logger log = Logger.getLogger(OntologyDatabaseLoader.class);
+    private final Logger log = LoggerFactory.getLogger(OntologyDatabaseLoader.class);
 
     private static final String[][] SUB_ONTOLOGIES = new String[][] {
             // Test based on principal Owl examples

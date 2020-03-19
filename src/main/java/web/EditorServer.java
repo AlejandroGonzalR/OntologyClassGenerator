@@ -1,16 +1,16 @@
 package web;
 
 import com.mxgraph.canvas.mxGraphicsCanvas2D;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import org.mortbay.jetty.Handler;
+import org.mortbay.jetty.Server;
+import org.mortbay.jetty.handler.HandlerList;
+import org.mortbay.jetty.handler.ResourceHandler;
+import org.mortbay.jetty.servlet.Context;
+import org.mortbay.jetty.servlet.ServletHolder;
 
 public class EditorServer {
 
-    public static int PORT = 8080;
+    public static int PORT = 8090;
 
     static {
 		mxGraphicsCanvas2D.HTML_SCALE = 0.75;
@@ -20,7 +20,7 @@ public class EditorServer {
     public static void main(String[] args) throws Exception {
         Server server = new Server(PORT);
 
-        ServletContextHandler context = new ServletContextHandler(server, "/");
+        Context context = new Context(server, "/");
         context.addServlet(new ServletHolder(new EchoServlet()), "/save");
         context.addServlet(new ServletHolder(new ExportServlet()), "/export");
         context.addServlet(new ServletHolder(new OpenServlet()), "/open");

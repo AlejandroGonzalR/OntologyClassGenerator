@@ -1,5 +1,7 @@
 package web;
 
+import utils.Utilities;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import java.io.OutputStream;
 import java.net.URLDecoder;
 
 public class EchoServlet extends HttpServlet {
+
+    Utilities util = new Utilities();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getContentLength() < Constants.MAX_REQUEST_SIZE) {
@@ -40,6 +44,13 @@ public class EchoServlet extends HttpServlet {
 
                 OutputStream out = response.getOutputStream();
                 out.write(xml.getBytes("UTF-8"));
+
+                // Generate ontology model
+                try {
+                    util.manageApp(xml);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 out.flush();
                 out.close();

@@ -1,17 +1,19 @@
 
-import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.neo4j.graphdb.Node;
 import neo4j.Neo4jOntologyNavigator;
 import neo4j.OntologyRelationshipType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 import java.util.Map;
 
 public class Neo4jOntologyNavigatorTest {
 
-    private static final Logger log = Logger.getLogger(Neo4jOntologyNavigator.class);
+    private static final Logger log = LoggerFactory.getLogger(Neo4jOntologyNavigator.class);
     private static final String NEODB_PATH = "temp/neo4j";
     private static Neo4jOntologyNavigator navigator;
 
@@ -33,7 +35,7 @@ public class Neo4jOntologyNavigatorTest {
         if (loireRegionNode != null) {
             List<Node> locations = navigator.getNeighborsRelatedBy(loireRegionNode, OntologyRelationshipType.LOCATED_IN);
             for (Node location : locations) {
-                log.info(location.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
+                log.info((String) location.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
             }
         }
     }
@@ -45,7 +47,7 @@ public class Neo4jOntologyNavigatorTest {
         if (usRegion != null) {
             List<Node> locations = navigator.getNeighborsRelatedBy(usRegion, OntologyRelationshipType.REGION_CONTAINS);
             for (Node location : locations) {
-                log.info(location.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
+                log.info((String) location.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
             }
         }
     }
@@ -57,7 +59,7 @@ public class Neo4jOntologyNavigatorTest {
         if (sweetNode != null) {
             List<Node> sweetWines = navigator.getNeighborsRelatedBy(sweetNode, OntologyRelationshipType.IS_SUGAR_CONTENT_OF);
             for (Node sweetWine : sweetWines) {
-                log.info(sweetWine.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
+                log.info((String) sweetWine.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
             }
         }
     }
@@ -71,7 +73,7 @@ public class Neo4jOntologyNavigatorTest {
             log.info("--- " + relType + " ---");
             List<Node> relatedNodes = neighbors.get(relType);
             for (Node relatedNode : relatedNodes) {
-                log.info(relatedNode.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
+                log.info((String) relatedNode.getProperty(Neo4jOntologyNavigator.ENTITY_NAME));
             }
         }
     }

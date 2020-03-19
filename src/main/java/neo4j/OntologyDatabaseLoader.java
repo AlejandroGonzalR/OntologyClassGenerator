@@ -1,7 +1,6 @@
 package neo4j;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.NotFoundException;
@@ -10,13 +9,15 @@ import org.neo4j.graphdb.Direction;
 import org.neo4j.index.IndexService;
 import org.neo4j.index.lucene.LuceneIndexService;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
-import org.apache.jena.graph.Node;
-import org.apache.jena.graph.Node_URI;
-import org.apache.jena.graph.Triple;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.graph.Node;
+import com.hp.hpl.jena.graph.Node_URI;
+import com.hp.hpl.jena.graph.Triple;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -30,7 +31,7 @@ public class OntologyDatabaseLoader {
     private static final String RELATIONSHIP_NAME = "name";
     private static final String RELATIONSHIP_WEIGHT = "weight";
 
-    private static Logger log = Logger.getLogger(OntologyDatabaseLoader.class);
+    private static Logger log = LoggerFactory.getLogger(OntologyDatabaseLoader.class);
 
     private String filePath;
     private String databasePath;
