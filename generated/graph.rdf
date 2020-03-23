@@ -2,40 +2,55 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:j.0="http://schema.org/" > 
   <rdf:Description rdf:nodeID="A0">
-    <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Square</j.0:type>
-    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</j.0:id>
+    <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rectangle</j.0:type>
+    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</j.0:id>
     <j.0:edge rdf:nodeID="A1"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A1">
-    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</j.0:target>
-    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</j.0:source>
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</j.0:source>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A2">
-    <j.0:vertex rdf:nodeID="A3"/>
-    <j.0:vertex rdf:nodeID="A4"/>
-    <j.0:vertex rdf:nodeID="A0"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</j.0:target>
-    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9</j.0:source>
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</j.0:source>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A3">
-    <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rounded Rectangle</j.0:type>
-    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</j.0:id>
-    <j.0:edge rdf:nodeID="A5"/>
-    <j.0:edge rdf:nodeID="A6"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</j.0:target>
-    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</j.0:source>
+    <j.0:vertex rdf:nodeID="A4"/>
+    <j.0:vertex rdf:nodeID="A5"/>
+    <j.0:vertex rdf:nodeID="A6"/>
+    <j.0:vertex rdf:nodeID="A0"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A4">
     <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rectangle</j.0:type>
-    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9</j.0:id>
-    <j.0:edge rdf:nodeID="A7"/>
+    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</j.0:id>
+    <j.0:edge rdf:nodeID="A2"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A7">
-    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</j.0:target>
-    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9</j.0:source>
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</j.0:source>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</j.0:source>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</j.0:source>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rectangle</j.0:type>
+    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</j.0:id>
+    <j.0:edge rdf:nodeID="A8"/>
+    <j.0:edge rdf:nodeID="A7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <j.0:type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rectangle</j.0:type>
+    <j.0:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</j.0:id>
+    <j.0:edge rdf:nodeID="A9"/>
+    <j.0:edge rdf:nodeID="A10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <j.0:target rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4</j.0:target>
+    <j.0:source rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</j.0:source>
   </rdf:Description>
 </rdf:RDF>

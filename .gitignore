@@ -1,5 +1,6 @@
 # JetBrains Modules
 .idea/
+*.iml
 
 # Maven Productions
 target/
