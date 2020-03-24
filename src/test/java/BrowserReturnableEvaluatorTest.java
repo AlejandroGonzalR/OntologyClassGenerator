@@ -16,6 +16,8 @@ import org.neo4j.graphdb.StopEvaluator;
 import org.neo4j.graphdb.Direction;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
 
+import static utils.Constants.NEO4J_TEST_TEMP_PATH;
+
 public class BrowserReturnableEvaluatorTest {
     private static final Object[][] QUADS = new Object[][] {
             new Object[] {"coke", RelTypes.GOES_WITH, 10.0F, "whopper"},
@@ -37,7 +39,7 @@ public class BrowserReturnableEvaluatorTest {
 
     @BeforeClass
     public static void setupBeforeClass() throws Exception {
-        neoService = new EmbeddedGraphDatabase("temp/neo4jTest");
+        neoService = new EmbeddedGraphDatabase(NEO4J_TEST_TEMP_PATH);
         Transaction tx = neoService.beginTx();
         try {
             coke = neoService.createNode();

@@ -1,6 +1,11 @@
 package utils;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.mxgraph.io.mxCodec;
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGraphModel;
@@ -12,8 +17,16 @@ import org.apache.commons.io.FilenameUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
-import org.jsonschema2pojo.*;
+import org.jsonschema2pojo.DefaultGenerationConfig;
+import org.jsonschema2pojo.GenerationConfig;
+import org.jsonschema2pojo.SourceType;
+import org.jsonschema2pojo.SchemaMapper;
+import org.jsonschema2pojo.Jackson2Annotator;
+import org.jsonschema2pojo.SchemaStore;
+import org.jsonschema2pojo.SchemaGenerator;
 import org.jsonschema2pojo.rules.RuleFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import java.io.File;
@@ -24,14 +37,18 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static utils.Constants.*;
+
 public class Utilities {
 
     JsonLdConverter jsonLdConverter = new JsonLdConverter(JsonLdConverter.Format.RDF_XML);
     private static final String ROOT_NAME = "ShapesGraph";
     private static final String[][] SUB_ONTOLOGY = new String[][]{new String[] {"graph.rdf", "Graph"}};
     String packageName = "model";
-    File inputJson = new File("generated/ontology.json");
-    File outputPojoDirectory = new File("generated");
+    File inputJson = new File(ONTOLOGY_JSON_ROUTE);
+    File outputPojoDirectory = new File(GENERATED_ROUTE);
+
+    private static Logger log = LoggerFactory.getLogger(OntologyDatabaseLoader.class);
 
     public static final String VERTICES_IRI = "http://schema.org/vertex";
     public static final String TYPE_IRI = "http://schema.org/type";
@@ -57,6 +74,7 @@ public class Utilities {
             JSONObject xmlJSONObj = XML.toJSONObject(xml);
             json = xmlJSONObj.toString(PRETTY_PRINT_INDENT_FACTOR);
         } catch (JSONException je) {
+            log.error("onJsonCast:xmlToJson", je);
             je.printStackTrace();
         }
         return json;
@@ -116,8 +134,8 @@ public class Utilities {
         JsonObject jsonObject = parser.parse(gson.toJson(modelContext)).getAsJsonObject();
         jsonObject.add("@context", addContextProperties());
 
-        System.out.println(gson.toJson(jsonObject));
-        System.out.println(jsonLdConverter.toRdf(gson.toJson(jsonObject)));
+        // System.out.println(gson.toJson(jsonObject));
+        // System.out.println(jsonLdConverter.toRdf(gson.toJson(jsonObject)));
 
         JsonArray objectAux = (JsonArray) jsonObject.get("vertices");
 
@@ -236,8 +254,8 @@ public class Utilities {
         for (String[] subOntology : SUB_ONTOLOGY) {
             OntologyDatabaseLoader loader = new OntologyDatabaseLoader();
             loader.setRefNodeName(ROOT_NAME);
-            loader.setFilePath(FilenameUtils.concat("generated", subOntology[0]));
-            loader.setDatabasePath("temp/neo4j");
+            loader.setFilePath(FilenameUtils.concat(GENERATED_ROUTE, subOntology[0]));
+            loader.setDatabasePath(NEO4J_TEMP_PATH);
             loader.setOntologyName(subOntology[1]);
             loader.loadFile();
         }

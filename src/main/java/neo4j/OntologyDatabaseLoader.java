@@ -102,6 +102,7 @@ public class OntologyDatabaseLoader {
             }
             transaction.success();
         } catch (NotFoundException e) {
+            log.error("onTransactionFailed:getReferenceNode", e);
             transaction.failure();
             throw e;
         } finally {
@@ -132,6 +133,7 @@ public class OntologyDatabaseLoader {
             relationship.setProperty(RELATIONSHIP_WEIGHT, 0.0F);
             transaction.success();
         } catch (Exception e) {
+            log.error("onTransactionFailed:getFileNode", e);
             transaction.failure();
             throw e;
         } finally {
@@ -171,6 +173,7 @@ public class OntologyDatabaseLoader {
                 transactionProcess(neoService, fileNode, subjectNode, objectNode, predicate);
                 transaction.success();
             } catch (Exception e) {
+                log.error("onTransactionFailed:insertIntoDatabase", e);
                 transaction.failure();
                 throw e;
             } finally {
@@ -236,6 +239,7 @@ public class OntologyDatabaseLoader {
             }
             transaction.success();
         } catch (Exception e) {
+            log.error("onTransactionFailed:isNodeConnected", e);
             transaction.failure();
             throw e;
         } finally {
@@ -266,6 +270,7 @@ public class OntologyDatabaseLoader {
             transaction.success();
             return entityNode;
         } catch (Exception e) {
+            log.error("onTransactionFailed:getEntityNode", e);
             transaction.failure();
             throw e;
         } finally {

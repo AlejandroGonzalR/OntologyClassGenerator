@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 
+import static utils.Constants.GRAPH_RDF_ROUTE;
+
 public class JsonLdConverter {
 
     private static Logger log = LoggerFactory.getLogger(OntologyDatabaseLoader.class);
@@ -44,7 +46,7 @@ public class JsonLdConverter {
             final StringWriter writer = new StringWriter();
             model.write(writer, format.getName());
 
-            FileOutputStream output = new FileOutputStream("generated/graph.rdf");
+            FileOutputStream output = new FileOutputStream(GRAPH_RDF_ROUTE);
             model.write(output);
 
             return writer.toString();

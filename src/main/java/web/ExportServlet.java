@@ -10,6 +10,7 @@ import com.mxpdf.text.pdf.PdfWriter;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
+import utils.Constants;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -18,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.StringReader;

@@ -1,11 +1,18 @@
 package neo4j;
 
-import org.neo4j.graphdb.*;
+import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Traverser;
 import org.neo4j.graphdb.Traverser.Order;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.Direction;
+import org.neo4j.graphdb.StopEvaluator;
+import org.neo4j.graphdb.ReturnableEvaluator;
 import org.neo4j.index.IndexService;
 import org.neo4j.index.lucene.LuceneIndexService;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,6 +27,8 @@ public class Neo4jOntologyNavigator {
     public static final String ENTITY_NAME = "name";
     public static final String RELATIONSHIP_NAME = "name";
     public static final String RELATIONSHIP_WEIGHT = "weight";
+
+    private static Logger log = LoggerFactory.getLogger(OntologyDatabaseLoader.class);
 
     private String neo4jPath;
     private GraphDatabaseService neoService;
@@ -62,6 +71,7 @@ public class Neo4jOntologyNavigator {
             transaction.success();
             return node;
         } catch (Exception e) {
+            log.error("onTransactionFailed:getByName", e);
             transaction.failure();
             throw(e);
         } finally {
@@ -100,6 +110,7 @@ public class Neo4jOntologyNavigator {
             transaction.success();
             return browserReturnableEvaluator.getNeighbors();
         } catch (Exception e) {
+            log.error("onTransactionFailed:getAllNeighbors", e);
             transaction.failure();
             throw e;
         } finally {
@@ -126,6 +137,7 @@ public class Neo4jOntologyNavigator {
             }
             transaction.success();
         } catch (Exception e) {
+            log.error("onTransactionFailed:getNeighborsRelatedBy", e);
             transaction.failure();
             throw(e);
         } finally {
