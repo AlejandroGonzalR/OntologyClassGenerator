@@ -1,4 +1,4 @@
-# OntologyClassGenerator
+# Ontology POJO Class Generator
 
 Dynamic Java POJO class generator based on an ontology drawn from the MxGraph editor storing entities and relationships on embedded neo4j database.
 
@@ -10,21 +10,13 @@ You can draw the ontology you need. Then, following the order of the MxGraph lib
 
 ## Running the tests
 
-The tests are focused on the implementation of ontologies in the neo4j database, for this the basic examples of ontologies wine.df and food.df were used.
+The tests are focused on the implementation of ontologies in the neo4j database, for this the basic examples of ontologies [wine.rdf](https://github.com/AlejandroGonzalR/OntologyClassGenerator/blob/master/src/main/resources/owl/wine.rdf) and [food.rdf](https://github.com/AlejandroGonzalR/OntologyClassGenerator/blob/master/src/main/resources/owl/food.rdf) were used.
 
 In the test directory you can run each test, these are classified in data load to the database, relationships and queries.
 
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
