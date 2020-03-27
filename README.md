@@ -4,9 +4,13 @@ Dynamic Java POJO class generator based on an ontology drawn from the MxGraph ed
 
 ## Getting Started
 
-This project is built with maven, to start import the changes of the POM file, now in the web package of the java source package run the [Editor Server](https://github.com/AlejandroGonzalR/OntologyClassGenerator/blob/master/src/main/java/web/EditorServer.java) file, the application will be available at [http://localhost:8090/src/main/www/index.html](http://localhost:8090/src/main/www/index.html) 
+This project is built with maven, to start import the changes of the POM file and add the libraries found in the [lib](https://github.com/AlejandroGonzalR/OntologyClassGenerator/tree/master/src/main/resources/lib) package, now in the web package of the java source package run the [Editor Server](https://github.com/AlejandroGonzalR/OntologyClassGenerator/blob/master/src/main/java/web/EditorServer.java) file, the application will be available at [http://localhost:8090/src/main/www/index.html](http://localhost:8090/src/main/www/index.html) 
+
+![editor screenshot](https://github.com/AlejandroGonzalR/OntologyClassGenerator/blob/master/src/main/resources/images/Editor%Screenshot.png)
 
 You can draw the ontology you need. Then, following the order of the MxGraph library, you can save your graph in the **save** option of the **file** menu, here the ontology will be generated and the POJO classes based on the graph, an example of the generated files can be found following [this link](https://github.com/AlejandroGonzalR/OntologyClassGenerator/tree/master/generated)
+
+**Note**: The validated shapes are Rectangle, Rounded Rectangle, Ellipse, Square, Circle and Rhombus. If you want to validate more, add the web query of the shape in **getTypeFromModel** Method in **Utilities** Java Class.
 
 ## Running the tests
 
