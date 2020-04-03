@@ -4,7 +4,6 @@ import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.ReturnableEvaluator;
 import org.neo4j.graphdb.TraversalPosition;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;

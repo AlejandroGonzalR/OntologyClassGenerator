@@ -2,7 +2,6 @@ import neo4j.BrowserReturnableEvaluator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,7 +39,7 @@ public class BrowserReturnableEvaluatorTest {
     @BeforeClass
     public static void setupBeforeClass() throws Exception {
         neoService = new EmbeddedGraphDatabase(NEO4J_TEST_TEMP_PATH);
-        Transaction tx = neoService.beginTx();
+        Transaction transaction = neoService.beginTx();
         try {
             coke = neoService.createNode();
             coke.setProperty("name", "coke");
@@ -51,12 +50,12 @@ public class BrowserReturnableEvaluatorTest {
                 rel.setProperty("name", ((RelationshipType) quad[1]).name());
                 rel.setProperty("weight", (Float) quad[2]);
             }
-            tx.success();
+            transaction.success();
         } catch (Exception e) {
-            tx.failure();
+            transaction.failure();
             throw e;
         } finally {
-            tx.finish();
+            transaction.finish();
         }
     }
 
@@ -69,7 +68,7 @@ public class BrowserReturnableEvaluatorTest {
 
     @Test
     public void testCustomEvaluator() throws Exception {
-        Transaction tx = neoService.beginTx();
+        Transaction transaction = neoService.beginTx();
         try {
             BrowserReturnableEvaluator customReturnEvaluator = new BrowserReturnableEvaluator(coke);
             Traverser traverser = coke.traverse(
@@ -92,12 +91,12 @@ public class BrowserReturnableEvaluatorTest {
                     System.out.println(relatedNode.getProperty("name"));
                 }
             }
-            tx.success();
+            transaction.success();
         } catch (Exception e) {
-            tx.failure();
+            transaction.failure();
             throw e;
         } finally {
-            tx.finish();
+            transaction.finish();
         }
     }
 }
